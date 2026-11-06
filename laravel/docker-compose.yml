@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: uidt_ufrses_app
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      APP_NAME: "UIDTprogramme UFR SES"
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_KEY: "base64:YOUR_GENERATED_APP_KEY_HERE"
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: uidt_ufr_ses
+      DB_USERNAME: uidt_user
+      DB_PASSWORD: uidt_secret_password
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: uidt_ufrses_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: uidt_ufr_ses
+      MYSQL_USER: uidt_user
+      MYSQL_PASSWORD: uidt_secret_password
+      MYSQL_ROOT_PASSWORD: root_secret_password
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

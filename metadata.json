@@ -1,0 +1,6 @@
+{
+  "name": "UIDTprogramme UFR SES",
+  "description": "Portail académique de l'UFR Sciences Économiques et Sociales de l'Université Iba Der Thiam de Thiès (UIDT) - Cours, TD, TP, Examens et Gestion des Filières.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
